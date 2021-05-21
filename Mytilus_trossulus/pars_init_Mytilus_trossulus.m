@@ -25,6 +25,8 @@ par.h_a = 9.115e-08;  free.h_a   = 1;   units.h_a = '1/d^2';      label.h_a = 'W
 par.s_G = 0.0001;     free.s_G   = 0;   units.s_G = '-';          label.s_G = 'Gompertz stress coefficient'; 
 
 %% other parameters 
+par.T_AH = 31376;     free.T_AH  = 0;   units.T_AH = 'K';         label.T_AH = 'Arrhenius temperature at upper boundary'; 
+par.T_H = 296;        free.T_H   = 0;   units.T_H = 'K';          label.T_H = 'upper boundary'; 
 par.del_M = 0.38171;  free.del_M = 1;   units.del_M = '-';        label.del_M = 'shape coefficient after metam'; 
 par.del_Mb = 1.5072;  free.del_Mb = 1;   units.del_Mb = '-';       label.del_Mb = 'shape coefficient at birth'; 
 par.f = 1;            free.f     = 0;   units.f = '-';            label.f = 'scaled functional response for 0-var data'; 

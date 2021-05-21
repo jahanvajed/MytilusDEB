@@ -17,7 +17,7 @@ metaData.ecoCode.gender  = {'D'};
 metaData.ecoCode.reprod  = {'O'};
 metaData.T_typical  = C2K(18); % K, body temp
 metaData.data_0     = {'ab'; 'aj'; 'ap'; 'am'; 'Lb'; 'Lj'; 'Lp'; 'Li'; 'Wdb'; 'Wdj'; 'Wdp'; 'Wdi'; 'Ri'}; 
-metaData.data_1     = {'t-L', 'L-Wd'}; 
+metaData.data_1     = {'t-L', 'L-Wd', 'T-dL'}; 
 
 metaData.COMPLETE = 2.5; % using criteria of LikaKear2011
 
@@ -47,7 +47,7 @@ data.ab = 1.75;   units.ab = 'd';    label.ab = 'age at birth';             bibk
   temp.ab = C2K(18);  units.temp.ab = 'K'; label.temp.ab = 'temperature';
 data.tj = 22;    units.tj = 'd';    label.tj = 'time since birth at metam'; bibkey.tj = 'Wate1979';   
   temp.tj = C2K(18);  units.temp.tj = 'K'; label.temp.tj = 'temperature';
-data.tp = 365;   units.tp = 'd';    label.tp = 'time since birth at puberty'; bibkey.tp = 'Seed1976';
+data.tp = 60;   units.tp = 'd';    label.tp = 'time since birth at puberty'; bibkey.tp = 'Seed1976';
   temp.tp = C2K(18);  units.temp.tp = 'K'; label.temp.tp = 'temperature';
   comment.tp = 'value is from Mytilus edulis, but is reasonable for Mytilus trossulus}';
 data.am = 1260;  units.am = 'd';    label.am = 'life span';                bibkey.am = 'Skid1983';   
@@ -56,7 +56,7 @@ data.am = 1260;  units.am = 'd';    label.am = 'life span';                bibke
 data.Lb  = 0.011;units.Lb  = 'cm';  label.Lb  = 'shell height at birth';   bibkey.Lb  = 'Wate1979';
   comment.Lb = 'shell height is from umbo to ventral margin';
 data.Lj  = 0.027;units.Lj  = 'cm';  label.Lj  = 'shell height at metam';   bibkey.Lj  = 'Wate1979';
-data.Lp  = 0.9;  units.Lp  = 'cm';  label.Lp  = 'shell height at puberty'; bibkey.Lp  = 'SkidChew1985';
+data.Lp  = 1;  units.Lp  = 'cm';  label.Lp  = 'shell height at puberty'; bibkey.Lp  = 'SkidChew1985';
 data.Li  = 7.08; units.Li  = 'cm';  label.Li  = 'ultimate shell height';   bibkey.Li  = 'Elliot2008';
 
 data.Wdb = 7e-7; units.Wdb = 'g';   label.Wdb = 'dry weight at birth';     bibkey.Wdb = 'Sand2015';
@@ -83,6 +83,19 @@ data.LW = [ ...
 0.6954 0.9273 1.45  1.22  0.5518 0.7578 1.327 2.439]';   % g, dry weight at f and T
 units.LW   = {'cm', 'g'};  label.LW = {'shell height', 'dry weight'};  
 bibkey.LW = 'Skid1983';
+
+ 
+% Growth rates (mm/d) in relation to temperature at optimal food
+% conditions...
+data.TdL2 = [...% C, mm/d
+18.5	0.141	;
+21.0	0.143	;
+23.5	0.130	;
+26.0	0.061]	
+data.TdL2(:,2) = data.TdL2(:,2)/10;  % convert mm to cm 
+units.TdL2  = {'C', 'cm/d'};  label.TdL2 = {'temperature', 'growth rate'};  
+bibkey.TdL2 = 'Vajedsamiei et al.';
+comment.TdL2 = 'mussel at 0.25-0.80 cm';
 
 %% set weights for all real data
 weights = setweights(data, []);

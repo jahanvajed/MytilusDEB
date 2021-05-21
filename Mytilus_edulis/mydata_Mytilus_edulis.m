@@ -5,8 +5,8 @@ metaData.phylum     = 'Mollusca';
 metaData.class      = 'Bivalvia'; 
 metaData.order      = 'Mytiloida'; 
 metaData.family     = 'Mytilidae';
-metaData.species    = 'Mytilus_edulis'; 
-metaData.species_en = 'Blue mussel'; 
+metaData.species    = 'Mytilus_edulis_trus'; 
+metaData.species_en = 'Blue mussel of W_B'; 
 metaData.ecoCode.climate = {'MC', 'ME'};
 metaData.ecoCode.ecozone = {'MAN', 'MPN', 'MN'};
 metaData.ecoCode.habitat = {'0jMp', 'jiMb', 'jiMi'};
@@ -17,7 +17,7 @@ metaData.ecoCode.gender  = {'Da'};
 metaData.ecoCode.reprod  = {'O'};
 metaData.T_typical  = C2K(18); % K, body temp
 metaData.data_0     = {'ab'; 'ap'; 'am'; 'Lb'; 'Lp';	'Li'; 'Wwb'; 'Wwp'; 'Wwi'; 'GSI'; 'Ri'}; 
-metaData.data_1     = {'t-L'; 't-dL'; 'L-Ww'; 'X-JX_L'; 'X-JP_L'; 'JX-JO_L'; 'L-JO'}; 
+metaData.data_1     = {'t-L'; 't-dL'; 'L-Ww'; 'X-JX_L'; 'X-JP_L'; 'JX-JO_L'; 'L-JO'}; % JX_L food consumption at L, JO_L O2 consumption at L
 
 metaData.COMPLETE = 3.8; % using criteria of LikaKear2011
 

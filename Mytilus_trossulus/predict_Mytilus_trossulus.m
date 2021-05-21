@@ -1,16 +1,26 @@
 function [prdData, info] = predict_Mytilus_trossulus(par, data, auxData)
   
   % unpack par, data, auxData
-  cPar = parscomp_st(par); vars_pull(par); 
+  %%% NOTE: function parscomp_st compute frequently used (simple) functions of the parameters, 
+  %%%       called compound-parameter, which do not depend on food level.
+  cPar = parscomp_st(par); vars_pull(par);
   vars_pull(cPar);  vars_pull(data);  vars_pull(auxData);
   
+  if F_m < 0
+    prdData = []; info = 0; return
+  end
+
   % compute temperature correction factors
-  TC_ab = tempcorr(temp.ab, T_ref, T_A);
-  TC_tj = tempcorr(temp.tj, T_ref, T_A);
-  TC_tp = tempcorr(temp.tp, T_ref, T_A);
-  TC_am = tempcorr(temp.am, T_ref, T_A);
-  TC_Ri = tempcorr(temp.Ri, T_ref, T_A);
-  TC_tL = tempcorr(temp.tL, T_ref, T_A);
+  pars_T = [T_A; T_H; T_AH];
+  
+  % compute temperature correction factors
+  pars_T = [T_A; T_H; T_AH];
+  TC_ab = tempcorr(temp.ab, T_ref, pars_T);
+  TC_tj = tempcorr(temp.tj, T_ref, pars_T);
+  TC_tp = tempcorr(temp.tp, T_ref, pars_T);
+  TC_am = tempcorr(temp.am, T_ref, pars_T);
+  TC_Ri = tempcorr(temp.Ri, T_ref, pars_T);
+  TC_tL = tempcorr(temp.tL, T_ref, pars_T);
   
   % zero-variate data
 
@@ -76,9 +86,13 @@ function [prdData, info] = predict_Mytilus_trossulus(par, data, auxData)
   ELw = [L_bj; L_jm]/del_M;                          % cm, shell height
   
   % length-weight
-  EWd_L = (LW(:,1) * del_M).^3 * d_V * (1 + f_tL * w); % g, dry weight   
+  EWd_L = (LW(:,1) * del_M).^3 * d_V * (1 + f_tL * w); % g, dry weight 
+  
+  % T-dL data post metam.
+  EdL2 = rho_B * k_M * tempcorr(C2K(TdL2(:,1)), T_ref, pars_T) * (Lw_i - 1);
   
   % pack to output
   prdData.tL = ELw;
+  prdData.TdL2 = EdL2;
   prdData.LW = EWd_L;
   
