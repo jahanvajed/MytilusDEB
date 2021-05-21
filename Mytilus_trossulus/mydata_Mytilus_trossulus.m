@@ -56,7 +56,7 @@ data.am = 1260;  units.am = 'd';    label.am = 'life span';                bibke
 data.Lb  = 0.011;units.Lb  = 'cm';  label.Lb  = 'shell height at birth';   bibkey.Lb  = 'Wate1979';
   comment.Lb = 'shell height is from umbo to ventral margin';
 data.Lj  = 0.027;units.Lj  = 'cm';  label.Lj  = 'shell height at metam';   bibkey.Lj  = 'Wate1979';
-data.Lp  = 4.5;  units.Lp  = 'cm';  label.Lp  = 'shell height at puberty'; bibkey.Lp  = 'SkidChew1985';
+data.Lp  = 0.9;  units.Lp  = 'cm';  label.Lp  = 'shell height at puberty'; bibkey.Lp  = 'SkidChew1985';
 data.Li  = 7.08; units.Li  = 'cm';  label.Li  = 'ultimate shell height';   bibkey.Li  = 'Elliot2008';
 
 data.Wdb = 7e-7; units.Wdb = 'g';   label.Wdb = 'dry weight at birth';     bibkey.Wdb = 'Sand2015';
@@ -102,6 +102,7 @@ txtData.comment = comment;
 
 %% Discussion points
 D1 = 'mod_2: t_j and L_j were given zero weight; tj is underestimated, probably due to lower temperature and/or food availability';
+D2 = 'data.Lp (shell height at puberty) value of 4.5 cm was not realistic. Changed to 0.9 by guess';
 metaData.discussion = struct('D1', D1);
 
 %% Links
