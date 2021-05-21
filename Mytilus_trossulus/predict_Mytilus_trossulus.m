@@ -89,7 +89,7 @@ function [prdData, info] = predict_Mytilus_trossulus(par, data, auxData)
   EWd_L = (LW(:,1) * del_M).^3 * d_V * (1 + f_tL * w); % g, dry weight 
   
   % T-dL data post metam.
-  EdL2 = rho_B * k_M * tempcorr(C2K(TdL2(:,1)), T_ref, pars_T) * (Lw_i - 1);
+  EdL2 = rho_B * k_M * tempcorr(C2K(TdL2(:,1)), T_ref, pars_T) * (Lw_i - 2.4);
   
   % pack to output
   prdData.tL = ELw;

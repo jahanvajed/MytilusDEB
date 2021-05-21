@@ -57,7 +57,7 @@ data.Lb  = 0.011;units.Lb  = 'cm';  label.Lb  = 'shell height at birth';   bibke
   comment.Lb = 'shell height is from umbo to ventral margin';
 data.Lj  = 0.027;units.Lj  = 'cm';  label.Lj  = 'shell height at metam';   bibkey.Lj  = 'Wate1979';
 data.Lp  = 1;  units.Lp  = 'cm';  label.Lp  = 'shell height at puberty'; bibkey.Lp  = 'SkidChew1985';
-data.Li  = 7.08; units.Li  = 'cm';  label.Li  = 'ultimate shell height';   bibkey.Li  = 'Elliot2008';
+data.Li  = 5; units.Li  = 'cm';  label.Li  = 'ultimate shell height';   bibkey.Li  = 'Elliot2008';
 
 data.Wdb = 7e-7; units.Wdb = 'g';   label.Wdb = 'dry weight at birth';     bibkey.Wdb = 'Sand2015';
 data.Wdj = 1.035e-5; units.Wdj = 'g';   label.Wdj = 'dry weight at metam';     bibkey.Wdj = 'Sand2015';
@@ -101,7 +101,8 @@ comment.TdL2 = 'mussel at 0.25-0.80 cm';
 weights = setweights(data, []);
 weights.tj = 0 * weights.tj;
 weights.Lj = 0 * weights.Lj;
-weights.Wdj = 2 * weights.Wdj;
+weights.Wdj = 1 * weights.Wdj;
+weights.TdL2 = 20 * weights.TdL2;
 
 %% set pseudodata and respective weights
 [data, units, label, weights] = addpseudodata(data, units, label, weights);
